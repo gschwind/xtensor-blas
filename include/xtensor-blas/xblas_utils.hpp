@@ -113,19 +113,7 @@ namespace xt
         }
     }
 
-    template <class A, std::enable_if_t<A::static_layout == layout_type::row_major>* = nullptr>
-    inline blas_index_t get_leading_stride(const A& a)
-    {
-        return detail::get_leading_stride_impl(a.strides().front(), a.shape().back());
-    }
-
-    template <class A, std::enable_if_t<A::static_layout == layout_type::column_major>* = nullptr>
-    inline blas_index_t get_leading_stride(const A& a)
-    {
-        return detail::get_leading_stride_impl(a.strides().back(), a.shape().front());
-    }
-
-    template <class A, std::enable_if_t<A::static_layout != layout_type::row_major && A::static_layout != layout_type::column_major>* = nullptr>
+    template <class A>
     inline blas_index_t get_leading_stride(const A& a)
     {
         if (a.layout() == layout_type::row_major)
