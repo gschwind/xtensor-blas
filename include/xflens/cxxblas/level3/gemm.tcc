@@ -310,3 +310,4 @@ gemm(StorageOrder order,
 } // namespace cxxblas
 
 #endif // CXXBLAS_LEVEL3_GEMM_TCC
+
